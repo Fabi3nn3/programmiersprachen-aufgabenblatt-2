@@ -2,6 +2,9 @@
 #include <catch.hpp>
 #include "vec2.hpp"
 #include "mat2.hpp"
+#include "circle.hpp"
+#include "rectangle.hpp"
+#define M_PI   3.14159265358979323846 
 TEST_CASE("TestDefaultConstructor","[TestDefaultConstructor]"){
 	Vec2 v;
 	REQUIRE(v.x == 0.0f);
@@ -172,6 +175,22 @@ TEST_CASE("TestRota","[TestRota]"){
 	REQUIRE( rota.b_ == Approx(-0.841471f));
 	REQUIRE( rota.c_ == Approx(0.841471f));
 	REQUIRE( rota.d_ == Approx(0.540302f));
+}
+
+TEST_CASE("TestCircleArea","[TestCircleArea]"){
+	
+	Circle kreis{5.0f};
+	REQUIRE(kreis.getradius() == Approx(5.0f));
+	REQUIRE(kreis.area() == Approx(78.5398163f));
+	REQUIRE(kreis.circum() == Approx(31.4159265));
+	REQUIRE(kreis.diameter() == Approx(10.0f));
+	kreis.setradius(6.66f);
+	REQUIRE(kreis.getradius() == Approx(6.66f));
+}
+
+TEST_CASE("TestRectangle","[TestRectangle]"){
+	Rectangle recht{5.0f,6.0f};
+	REQUIRE(recht.area() == Approx(30.0f));
 }
 
 
